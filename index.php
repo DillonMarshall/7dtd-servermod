@@ -26,7 +26,7 @@ switch(@$_GET['do'])
 {
   default:
   case "modmgr":
-  $main="<h3>Activate/Deactivate Modlets</h3>Select the Modlets that you would like to enable by simple checking the box next to it. You will need to stop and start your server for any changes to this list to activate.<br><br>".SDD_ModMgr();
+  $main="<h3>Activate/Deactivate Modlets</h3>Select and deselect from the current list of modlets. You Must restart the server manually in order for these changes to take effect.<br><br>".SDD_ModMgr();
   break;
 
   case "image":
@@ -43,7 +43,7 @@ switch(@$_GET['do'])
   break;
   
   case "rwgAnalyzer":
-  $main="<h3>Random World Generator World Analyzer</h3>This page show you statistics about Worlds that your server has generated. It can help you better understand how prefabs were placed into a map before you even play it. Carefully examining this can help you determine if you have a seed and world generated that is worth playing.".rwganalyzer();
+  $main="<h3>Random World Generator World Analyzer</h3>This page gives you detailed statistics about the Worlds that are generated on your server. It can give you a better understanding on how prefabs were placed onto a map before you begin playing, allowing you to potentially save time by givingyou the tools to analyze your world before playing on it.".rwganalyzer();
   //phpinfo();
   break;
 
@@ -139,7 +139,7 @@ if(@$_GET['autoexplore_control']!='')
 if(@$_GET['control']!='')
   {
     if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
-    if($_GET['control']=='FORCE_STOP') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
+    if($_GET['control']=='FORCE_STOP') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="STOPPING WITH TREMENDOUS FORCE"; }
     if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING"; }
     $left.=$status;
   }
@@ -150,7 +150,7 @@ else
     {
       case "UP":
       $left.="<a href=?control=STOP>STOP SERVER</a><br>";
-      $left.="<a href=?control=FORCE_STOP>FORCE STOP SERVER</a>";
+      $left.="<a href=?control=FORCE_STOP>FORCE SERVER TO STOP</a>";
       break;
 
       case "DOWN":
